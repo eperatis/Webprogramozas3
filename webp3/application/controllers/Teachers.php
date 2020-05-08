@@ -36,7 +36,7 @@ class Teachers extends CI_Controller{
             $upload_config['min_height'] = 150;
             $upload_config['max_height'] = 1200;
             
-            $upload_config['file_name'] = '02';
+            $upload_config['file_name'] = time();
             $upload_config['upload_path'] = './uploads/';
             $upload_config['file_ext_tolower'] = TRUE;
             $upload_config['overwrite'] = TRUE;
@@ -57,12 +57,26 @@ class Teachers extends CI_Controller{
                                               $this->input->post('osztaly'));
                 
                 $this->load->helper('url');
-                redirect(base_url('students'));
+                redirect(base_url('teachers'));
             }  
         }
         
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->view('teachers/insert');
+    }
+    
+    public function delete($id = NULL) {
+        if($id == NULL) {
+            show_error('Hiányzó rekord azonosító!');
+        }
+        $record = $this->teachers_model->select_by_id($id);
+        if($record == NULL) {
+            show_error('Ilyen azonodítóval nincs rekord!');
+        }
+        
+        $this->teachers_model->delete($id);
+        $this->load->helper('url');
+        redirect(base_url('teachers'));
     }
 }

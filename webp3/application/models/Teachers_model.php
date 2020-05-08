@@ -29,7 +29,7 @@ class Teachers_model extends CI_Model {
     }
     
     public function insert($firstName, $lastName,$email, $osztaly) {
-        $path = "./uploads/" . $firstName . "01";
+        $path = "./uploads/" . time();
         $record = [
             'firstName' => $firstName,
             'lastName' => $lastName,
@@ -39,5 +39,18 @@ class Teachers_model extends CI_Model {
         ];
         
         return $this->db->insert('teachers', $record);
+    }
+    
+    public function select_by_id($id) {
+        $this->db->select("*");
+        $this->db->from('teachers');
+        $this->db->where('id',$id);
+        
+        return $this->db->get()->row();
+    }
+    
+    public function delete($id) {
+        $this->db->where('id',$id);
+        $this->db->delete('teachers');
     }
 }
