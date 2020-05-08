@@ -28,4 +28,15 @@ class Students_model extends CI_Model{
         
         return $result;
     }
+    
+    public function insert($firstName, $lastName, $osztaly) {
+        $record = [
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'osztaly' => $osztaly
+        ];
+        
+        return $this->db->insert('students', $record);
+        return $this->db->insert_id();
+    }
 }
