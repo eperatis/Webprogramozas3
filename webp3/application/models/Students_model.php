@@ -39,4 +39,28 @@ class Students_model extends CI_Model{
         return $this->db->insert('students', $record);
         return $this->db->insert_id();
     }
+    
+    public function select_by_id($id) {
+        $this->db->select("*");
+        $this->db->from('students');
+        $this->db->where('id',$id);
+        
+        return $this->db->get()->row();
+    }
+
+    public function delete($id) {
+        $this->db->where('id',$id);
+        $this->db->delete('students');
+    }
+    
+    public function update($id,$firstName,$lastName,$osztaly) {
+        $record = [
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'osztaly' => $osztaly
+        ];
+        
+        $this->db->where('id',$id);
+        return $this->db->update('students',$record);
+    }
 }

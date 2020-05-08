@@ -1,13 +1,15 @@
-<?php echo anchor(base_url('students/insert'),'Új hozzáadása'); ?>
+<?php $this->load->view('assets/header'); ?>
+
 <?php if($students == NULL || empty($students)) : ?>
     <p>Nincs rögzítve diák!</p>
 <?php else: ?>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Vezetéknév</th>
                 <th>Keresztnév</th>
                 <th>Osztály</th>
+                <th>Műveletek</th>
             </tr>
         </thead>
         <tbody>
@@ -16,8 +18,14 @@
                 <td><?=$emp->lastName?></td>
                 <td><?=$emp->firstName?></td>
                 <td><?=$emp->osztaly?></td>
+                <td>
+                    <?php echo anchor(base_url('students/edit/'.$emp->id),'Módosítás',["class"=>"btn btn-info btn-large pull-right"]);?>
+                    <?php echo anchor(base_url('students/delete/'.$emp->id),'Törlés',["class"=>"btn btn-danger btn-large pull-right"]);?>
+                </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 <?php endif; ?>
+
+<?php $this->load->view('assets/footer'); ?>
