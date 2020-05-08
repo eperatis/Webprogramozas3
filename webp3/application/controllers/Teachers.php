@@ -27,7 +27,7 @@ class Teachers extends CI_Controller{
         $this->load->view('teachers/list', $view_params);
     } 
     
-    public function insert($firstName,$lastName,$email,$osztaly) {
+    public function insert() {
         if($this->input->post('submit')) {
             $upload_config['allowed_types'] = 'jpg|gif|png';
             $upload_config['max_size'] = 100; 
@@ -36,7 +36,7 @@ class Teachers extends CI_Controller{
             $upload_config['min_height'] = 150;
             $upload_config['max_height'] = 1200;
             
-            $upload_config['file_name'] = $firstName + '01';
+            $upload_config['file_name'] = '02';
             $upload_config['upload_path'] = './uploads/';
             $upload_config['file_ext_tolower'] = TRUE;
             $upload_config['overwrite'] = TRUE;

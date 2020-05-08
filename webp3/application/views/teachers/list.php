@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($students as &$emp): ?>
+            <?php foreach($teachers as &$emp): ?>
             <tr>
                 <td><?=$emp->lastName?></td>
                 <td><?=$emp->firstName?></td>
