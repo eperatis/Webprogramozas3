@@ -7,7 +7,3 @@ create table cities(
     constraint UQ_cities_name unique(name),
     constraint PK_cities primary key(id)
     );
-
-alter table employees add COLUMN 
-    path varchar(250) not null after tin
-    ;

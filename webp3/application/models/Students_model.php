@@ -37,7 +37,6 @@ class Students_model extends CI_Model{
         ];
         
         return $this->db->insert('students', $record);
-        return $this->db->insert_id();
     }
     
     public function select_by_id($id) {
