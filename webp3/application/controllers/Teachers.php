@@ -25,7 +25,33 @@ class Teachers extends CI_Controller{
         ];
         $this->load->helper('url');
         $this->load->view('teachers/list', $view_params);
-    } 
+    }  
+    
+    public function profile($id = NULL) {
+        if($id == NULL) {
+            show_error('A szerkesztéshez hiányzik az id!');
+        }
+        $record = $this->teachers_model->select_by_id($id);
+        if($record == NULL) {
+            show_error('Nem létezik ilyen rekord!');
+        }
+        
+        $view_params = [
+            'data' => $record
+        ];
+        $this->load->helper('url');
+        $this->load->view('teachers/profile', $view_params);
+    }
+    
+    public function dataforedit() {
+        $records = $this->teachers_model->select_by_id($id);
+        $view_params = [
+            'teachers' => $records
+        ];
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->view('teachers/edit', $view_params);
+    }
     
     public function insert() {
         if($this->input->post('submit')) {
@@ -74,9 +100,45 @@ class Teachers extends CI_Controller{
         if($record == NULL) {
             show_error('Ilyen azonodítóval nincs rekord!');
         }
-        
         $this->teachers_model->delete($id);
         $this->load->helper('url');
         redirect(base_url('teachers'));
+    }
+    
+    public function edit($id = NULL){
+        if($id == NULL) {
+            show_error('A szerkesztéshez hiányzik az id!');
+        }
+        $record = $this->teachers_model->select_by_id($id);
+        if($record == NULL) {
+            show_error('Nem létezik ilyen rekord!');
+        }
+        
+        $this->load->library('form_validation');
+            $this->form_validation->set_rules('firstName','keresztnév','required');
+            $this->form_validation->set_rules('lastName','vezetéknév','required');
+            $this->form_validation->set_rules('email','email','required');
+            $this->form_validation->set_rules('osztaly','osztály','required');
+            
+            
+            if($this->form_validation->run() == TRUE)  {
+                $this->teachers_model->update($id,
+                                              $this->input->post('firstName'),
+                                              $this->input->post('lastName'),
+                                              $this->input->post('email'),
+                                              $this->input->post('osztaly'));
+                
+                $this->load->helper('url');
+                redirect(base_url('teachers'));
+            }
+            else {
+                $view_params = [
+                    'emp' => $record
+                ];
+
+                $this->load->helper('url');
+                $this->load->helper('form');
+                $this->load->view('teachers/edit',$view_params);
+            }
     }
 }

@@ -53,4 +53,16 @@ class Teachers_model extends CI_Model {
         $this->db->where('id',$id);
         $this->db->delete('teachers');
     }
+    
+    public function update($id,$firstName,$lastName,$email,$osztaly) {
+        $record = [
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'email' => $email,
+            'osztaly' => $osztaly
+        ];
+        
+        $this->db->where('id',$id);
+        return $this->db->update('teachers',$record);
+    }
 }

@@ -19,7 +19,7 @@
                 <td><?=$emp->firstName?></td>
                 <td><?=$emp->osztaly?></td>
                 <td>
-                    <?php echo anchor(base_url('teachers/edit/'.$emp->id),'Elérhetőség',["class"=>"btn btn-info btn-large pull-right"]);?>
+                    <?php echo anchor(base_url('teachers/profile/'.$emp->id),'Elérhetőség',["class"=>"btn btn-info btn-large pull-right"]);?>
                     <?php echo anchor(base_url('teachers/edit/'.$emp->id),'Módosítás',["class"=>"btn btn-info btn-large pull-right"]);?>
                     <?php echo anchor(base_url('teachers/delete/'.$emp->id),'Törlés',["class"=>"btn btn-danger btn-large pull-right"]);?>
                 </td>
