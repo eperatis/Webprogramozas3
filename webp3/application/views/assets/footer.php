@@ -2,7 +2,7 @@
         <!-- Footer -->
         <footer class="page-footer font-small fixed-bottom">
           <div class="footer-copyright text-center py-3">MadeBy:
-             Eperjesi Attila
+             Attila Eperjesi
           </div>
         </footer>
 

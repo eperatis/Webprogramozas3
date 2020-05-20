@@ -29,7 +29,7 @@ class Teachers_model extends CI_Model {
     }
     
     public function insert($firstName, $lastName,$email, $osztaly) {
-        $path = "./uploads/" . time();
+        $path = "uploads/" . time() . ".jpg";
         $record = [
             'firstName' => $firstName,
             'lastName' => $lastName,

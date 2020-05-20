@@ -1,6 +1,6 @@
 <?php $this->load->view('assets/header'); ?>
 
-<img src="<?=print_r($data->{'path'}).base_url()?>" />
+<img src="<?php echo base_url();echo $data->{'path'}; ?>" />
 
 <p>
     <strong>Név:</strong>
