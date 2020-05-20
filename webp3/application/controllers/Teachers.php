@@ -43,16 +43,6 @@ class Teachers extends CI_Controller{
         $this->load->view('teachers/profile', $view_params);
     }
     
-    public function dataforedit() {
-        $records = $this->teachers_model->select_by_id($id);
-        $view_params = [
-            'teachers' => $records
-        ];
-        $this->load->helper('url');
-        $this->load->helper('form');
-        $this->load->view('teachers/edit', $view_params);
-    }
-    
     public function insert() {
         if($this->input->post('submit')) {
             $upload_config['allowed_types'] = 'jpg|gif|png';
@@ -69,7 +59,7 @@ class Teachers extends CI_Controller{
             $this->load->library('upload'); 
             $this->upload->initialize($upload_config);
             
-        $this->load->library('form_validation');
+            $this->load->library('form_validation');
             $this->form_validation->set_rules('firstName','keresztnév','required');
             $this->form_validation->set_rules('lastName','vezetéknév','required');
             $this->form_validation->set_rules('email','email','required');
