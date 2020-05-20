@@ -26,6 +26,6 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    
 <?php endif; ?>
-
 <?php $this->load->view('assets/footer'); ?>
