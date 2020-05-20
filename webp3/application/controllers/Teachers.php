@@ -40,6 +40,7 @@ class Teachers extends CI_Controller{
             'data' => $record
         ];
         $this->load->helper('url');
+        $this->load->helper('form');
         $this->load->view('teachers/profile', $view_params);
     }
     

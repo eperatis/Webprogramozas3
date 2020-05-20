@@ -1,4 +1,5 @@
-<?php $this->load->view('assets/header'); ?>
+<?php $this->load->view('assets/header');  ?>
+<?php echo form_open(); ?>
 <div class="d-flex justify-content-center">
     <div class="text-center">
         <div style="text-align: center;
@@ -23,8 +24,10 @@
                 <?php print_r($data->{'osztaly'}); ?>
                 <?php echo '. osztály'; ?>
             </p>
+            <?php echo anchor(base_url('students/export/'.$data->osztaly),'Osztály névsor letöltése',["class"=>"btn btn-danger btn-large pull-right mb-1"]);?>
         </div>
     </div>
 </div>
+<?php echo form_close(); ?>
 <?php $this->load->view('assets/footer'); ?>
 
