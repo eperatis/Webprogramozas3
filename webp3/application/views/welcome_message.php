@@ -11,5 +11,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         illetve letöltheti azok osztály névsorát
     </h2>
     <h2>Admin bejelentkezés a login gombra kattintva!</h2>
+    <h3>(Csak egy super admin bejelentkezés van (email: admin@admin.com pass: password)!)</h3>
 </div>
 <?php $this->load->view('assets/footer'); ?>
