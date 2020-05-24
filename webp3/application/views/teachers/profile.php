@@ -1,3 +1,8 @@
+<?php if (!$this->ion_auth->logged_in()): ?>
+    <?php redirect(base_url('auth/login')); ?>
+<?php else: ?>
+
+
 <?php $this->load->view('assets/header');  ?>
 <?php echo form_open(); ?>
 <div class="d-flex justify-content-center">
@@ -31,3 +36,4 @@
 <?php echo form_close(); ?>
 <?php $this->load->view('assets/footer'); ?>
 
+<?php endif ?>

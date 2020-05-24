@@ -30,7 +30,7 @@ class Students_model extends CI_Model{
     }
     
     public function get_list_by_osztaly($osztaly) {
-        $this->db->select('*');
+        $this->db->select('firstName,lastName,osztaly');
         $this->db->from('students');
         $this->db->where('osztaly',$osztaly);
         $this->db->order_by('lastName','ASC');

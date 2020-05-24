@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active mt-2 mt-lg-0">
-                  <a class="nav-link" href="#">Kezdőlap <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="<?php echo base_url()?>">Kezdőlap <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url('students')?>">Diákok</a>
@@ -24,19 +24,34 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url('documents')?>">Dokumentumok</a>
                 </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Új hozzáadása
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="<?php echo base_url('students/insert')?>">Diák</a>
-                    <a class="dropdown-item" href="<?php echo base_url('teachers/insert')?>">Tanár</a>
-                    <a class="dropdown-item" href="<?php echo base_url('documents/insert')?>">Dokumentum</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+                <?php if (!$this->ion_auth->logged_in()): ?>
+                <?php else: ?> 
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Új hozzáadása
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<?php echo base_url('students/insert')?>">Diák</a>
+                        <a class="dropdown-item" href="<?php echo base_url('teachers/insert')?>">Tanár</a>
+                        <a class="dropdown-item" href="<?php echo base_url('documents/insert')?>">Dokumentum</a>
+                      </div>
+                    </li>
+                <?php endif ?>
+              </ul>
+              <ul class="navbar-nav ml-auto">  
+                <?php if (!$this->ion_auth->logged_in()): ?>
+                    <li class="nav-item">
+                      <a class="nav-link btn-success" href="<?php echo base_url('auth/login')?>">Login</a>
+                    </li>
+                <?php else: ?>
+                <?php endif ?>
+                
+                <?php if (!$this->ion_auth->logged_in()): ?>
+                <?php else: ?> 
+                    <li class="nav-item">
+                      <a class="nav-link btn-danger" href="<?php echo base_url('auth/logout')?>">Logout</a>
+                    </li>
+                <?php endif ?>
               </ul>
             </div>
           </nav>

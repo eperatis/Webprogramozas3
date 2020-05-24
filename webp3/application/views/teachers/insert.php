@@ -1,3 +1,7 @@
+<?php if (!$this->ion_auth->logged_in()): ?>
+    <?php redirect(base_url('auth/login')); ?>
+<?php else: ?>
+
 <?php $this->load->view('assets/header'); ?>
 <div class="row d-flex justify-content-center">
     <div class="text-center col-md-6">
@@ -35,3 +39,5 @@
     </div>
 </div>
 <?php $this->load->view('assets/footer'); ?>
+
+<?php endif ?>

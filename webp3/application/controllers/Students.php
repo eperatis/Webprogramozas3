@@ -117,7 +117,7 @@ class Students extends CI_Controller{
 
             $file = fopen('php://output', 'w');
 
-            $header = array("ID","Keresztnév","Vezetéknév","Osztály"); 
+            $header = array("Keresztnév","Vezetéknév","Osztály"); 
             fputcsv($file, $header);
             foreach ($records as $rows){ 
               fputcsv($file,(array) $rows); 
